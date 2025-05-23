@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fingerprint Clone</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <section class="bg-white py-16 px-4 md:px-12">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Left: Main Feature -->
+      <div class="md:col-span-2 p-6 border rounded-2xl shadow-sm bg-white">
+        <p class="text-sm font-mono text-gray-500 mb-2">Why Fingerprint_</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          The internet's most <span class="text-orange-500">accurate</span> visitor identifier
+        </h2>
+        <p class="text-gray-700 font-medium mb-6">
+          <strong>Industry-leading accuracy</strong> that lasts for months or years, even when cookies are cleared.
+        </p>
+        <button class="bg-white border border-gray-300 px-4 py-2 rounded-md shadow-sm text-sm font-medium hover:bg-gray-100 transition">
+          Learn More
+        </button>
+
+        <!-- Placeholder for chart -->
+        <div class="mt-8">
+          <canvas id="accuracyChart" class="w-full h-64"></canvas>
+        </div>
+      </div>
+
+      <!-- Right: Feature Cards -->
+      <div class="flex flex-col gap-4">
+        <!-- Card 1 -->
+        <div class="border p-4 rounded-2xl shadow-sm bg-white flex items-start gap-3">
+          <span class="text-orange-500 text-xl">🔍</span>
+          <div>
+            <h3 class="font-semibold text-gray-900">Any browser, any device.</h3>
+            <p class="text-sm text-gray-600">
+              Identify returning web and mobile app visitors on all browsers, iOS, and Android, with exceptional accuracy.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="border p-4 rounded-2xl shadow-sm bg-white flex items-start gap-3">
+          <span class="text-orange-500 text-xl">🕵️</span>
+          <div>
+            <h3 class="font-semibold text-gray-900">Identify all anonymous visitors.</h3>
+            <p class="text-sm text-gray-600">
+              Get details on suspicious visitors even when VPN, incognito mode, or a tampered browser or device is used.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="border p-4 rounded-2xl shadow-sm bg-white flex items-start gap-3">
+          <span class="text-orange-500 text-xl">💡</span>
+          <div>
+            <h3 class="font-semibold text-gray-900">Delight your trusted users.</h3>
+            <p class="text-sm text-gray-600">
+              Personalize user experience and reduce 2FA and OTP requirements by identifying logged-out users.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<script>
+  const ctx = document.getElementById('accuracyChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['0', '30', '60', '90', '120'],
+      datasets: [
+        {
+          label: 'Fingerprint',
+          data: [98, 97, 96, 96, 95],
+          borderColor: '#f97316', // Tailwind orange-500
+          backgroundColor: 'transparent',
+          tension: 0.4
+        },
+        {
+          label: 'Other Solutions',
+          data: [98, 92, 70, 50, 40],
+          borderColor: '#6366f1', // Tailwind indigo-500
+          backgroundColor: 'transparent',
+          tension: 0.4
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        tooltip: {
+          enabled: true
+        },
+        legend: {
+          display: true,
+          position: 'bottom'
+        }
+      },
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: 'Days after initial identification'
+          }
+        },
+        y: {
+          title: {
+            display: true,
+            text: 'Accuracy (%)'
+          },
+          min: 0,
+          max: 100
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>
